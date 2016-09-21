@@ -1,11 +1,12 @@
 import React from 'react'
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils'
 import Voting from '../../src/components/Voting'
+import ReactDOM from 'react-dom'
 import {expect} from 'chai'
 import {describe, it} from 'mocha'
 
 describe('Voting', () => {
-  it('renders a pair of buttons', () => {
+  it.only('renders a pair of buttons', () => {
     const component = renderIntoDocument(<Voting pair={['Trainspotting', '28 Days Later']} />)
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button')
     expect(buttons.length).to.equal(2)
@@ -24,5 +25,16 @@ describe('Voting', () => {
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button')
     Simulate.click(buttons[0])
     expect(votedWith).to.equal('Trainspotting')
+  })
+
+  it('renders just the winner when there si one', () => {
+    const component = renderIntoDocument(
+      <Voting winner='Trainspotting' />)
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button')
+    expect(buttons.length).to.equal(0)
+
+    const winner = ReactDOM.findDOMNode(component.refs.winner)
+    expect(winner).to.be.ok
+    expect(winner.textContent).to.contain('Trainspotting')
   })
 })
