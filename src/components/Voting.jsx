@@ -1,8 +1,10 @@
 import React from 'react'
 import Winner from './Winner.jsx'
 import Vote from './Vote.jsx'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 export default React.createClass({
+  mixins: [PureRenderMixin],
   getPair: function () {
     return this.props.pair || []
   },
@@ -13,9 +15,8 @@ export default React.createClass({
     return this.props.hasVoted === entry
   },
   render: function () {
-    console.log('PROPS', this.props)
     return <div>
-      {this.props.winner
+      { this.props.winner
         ? <Winner ref='winner' winner={this.props.winner} />
         : <Vote {... this.props} />}
     </div>
