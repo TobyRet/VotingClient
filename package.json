@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run standard --fix && mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --hot --inline",
     "standard": "$(npm bin)/standard",
     "test:watch": "npm run test -- --watch"
   },
