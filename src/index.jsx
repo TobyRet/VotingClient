@@ -6,8 +6,8 @@ import Results from './components/Results'
 import App from './components/App'
 
 const routes = <Route component={App}>
-  <Route path ='/results' component={Results} />
-  <Route path ='/' component={Voting} />
+  <Route path='/results' component={Results} />
+  <Route path='/' component={Voting} />
 </Route>
 
 ReactDOM.render(

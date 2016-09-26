@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run standard && mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
     "dev": "webpack-dev-server",
-    "standard": "$(npm bin)/standard",
+    "standard": "$(npm bin)/standard --fix",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
