@@ -12,16 +12,13 @@ import remoteActionMiddleware from './remote_action_middleware'
 import App from './components/App'
 
 const socket = io(`${window.location.protocol}//${window.location.hostname}:8090`)
-socket.on('state', state =>
-  store.dispatch(setState(state))
-)
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
 )(createStore)
 const store = createStoreWithMiddleware(reducer)
 
 socket.on('state', state =>
-  store.dispatch({type: 'SET_STATE', state})
+  store.dispatch(setState(state))
 )
 
 const routes = <Route component={App}>
