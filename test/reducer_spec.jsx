@@ -81,6 +81,7 @@ describe('reducer', () => {
       }
     }))
   })
+
   it('removes hasVoted on SET_STATE if pair changes', () => {
     const initialState = fromJS({
       vote: {
@@ -94,7 +95,7 @@ describe('reducer', () => {
       type: 'SET_STATE',
       state: {
         vote: {
-          pair: ['Sunshine', 'Slumdog Millionaire']
+          pair: ['Trainspotting', 'Slumdog Millionaire']
         }
       }
     }
@@ -103,7 +104,7 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
-        pair: ['Sunshine', 'Slumdog Millionaire']
+        pair: ['Trainspotting', 'Slumdog Millionaire']
       }
     }))
   })

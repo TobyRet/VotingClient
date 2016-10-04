@@ -1,6 +1,7 @@
 import React from 'react'
 import Winner from './Winner.jsx'
 import Vote from './Vote.jsx'
+import Title from './Title.jsx'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import * as actionCreators from '../action_creators'
 import {connect} from 'react-redux'
@@ -18,6 +19,7 @@ export const Voting = React.createClass({
   },
   render: function () {
     return <div>
+      <Title />
       { this.props.winner
         ? <Winner ref='winner' winner={this.props.winner} />
         : <Vote {... this.props} /> }

@@ -1,6 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Winner from './Winner'
+import Title from'./Title'
 import {connect} from 'react-redux'
 import * as actionCreators from '../action_creators'
 
@@ -16,25 +17,28 @@ export const Results = React.createClass({
     return 0
   },
   render: function () {
-    return this.props.winner
-      ? <Winner ref='winner' winner={this.props.winner} />
-      : <div className='results'>
+    if (this.props.winner) {
+      return <div>
+        <Title />
+        <Winner ref='winner' winner={this.props.winner} />
+      </div>
+    } else {
+      return <div className='results'>
+        <h1 className='display-1 heading-centre'>RESULTS</h1>
         <div className='tally'>
           {this.getPair().map(entry =>
-            <div key={entry} className='entry'>
-              <h1>{entry}</h1>
-              <div className='voteCount'>
-                {this.getVotes(entry)}
-              </div>
+            <div key={entry} className='entry centre-align'>
+              <h3 className='display-3 results'>{entry} ... <span className='tally'>{this.getVotes(entry)}</span></h3>
             </div>
           )}
         </div>
-        <div className='management'>
-          <button ref='next' className='next' onClick={this.props.next}>
-            Next
+        <div className='management centre-align'>
+          <button ref='next' className='next btn btn-lg btn-outline-secondary' onClick={this.props.next}>
+            Next voting pair
           </button>
         </div>
       </div>
+    }
   }
 })
 

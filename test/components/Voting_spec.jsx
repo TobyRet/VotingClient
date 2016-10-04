@@ -28,7 +28,7 @@ describe('Voting', () => {
     expect(votedWith).to.equal('Trainspotting')
   })
 
-  it('renders just the winner when there si one', () => {
+  it('renders just the winner when there is one', () => {
     const component = renderIntoDocument(
       <Voting winner='Trainspotting' />)
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button')

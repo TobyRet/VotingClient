@@ -17,16 +17,22 @@ export default React.createClass({
 
   render: function () {
     return <div className='voting'>
-      {this.getPair().map(entry =>
-        <button key={entry}
-          disabled={this.isDisabled()}
-          onClick={() => this.props.vote(entry)}>
-          <h1>{entry}</h1>
-          {this.hasVotedFor(entry)
-            ? <div className='label'>Voted</div>
-            : null}
-        </button>
-      )}
+      <div className='row'>
+        {this.getPair().map(entry =>
+          <div key={entry} className='col-md-6'>
+            <div className='centre-align'>
+              <button className='btn btn-outline-secondary set-btn-width'
+                disabled={this.isDisabled()}
+                onClick={() => this.props.vote(entry)}>
+                <h1 className='vote-title'>{entry}</h1>
+                {this.hasVotedFor(entry)
+                  ? <div className='label'>Thanks for voting!</div>
+                  : null}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   }
 })

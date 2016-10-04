@@ -1,27 +1,27 @@
-const path = require('path')
-
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
-    './src/index.jsx'
+    './src'
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: path.join(__dirname, './dist'),
+    path: __dirname,
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist',
+    historyApiFallback: true,
+    contentBase: './',
     hot: 'true'
   }
 }
